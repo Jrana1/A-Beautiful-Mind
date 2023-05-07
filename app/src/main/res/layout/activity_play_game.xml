@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".PlayGame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="40dp"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Now, it's your game..."
+        android:id="@+id/text1"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text1"
+        android:layout_centerHorizontal="true"
+        android:text="Your opponent plays according to this strategy:"
+        android:textSize="10dp"
+        android:layout_marginBottom="1dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cautious"
+        android:layout_below="@+id/text2"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/strategyName"
+        android:layout_marginBottom="20dp"
+        />
+
+
+        <!--Game board-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/row1"
+            android:layout_below="@+id/strategyName">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:layout_weight="1"
+                android:background="#BF360C"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="B"
+                android:layout_weight="1"
+                android:background="#0D47A1"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                />
+        </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/row2"
+            android:layout_below="@+id/row1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:layout_weight="0.22"
+                    android:background="#BF360C"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="2 / 1"
+                    android:layout_weight=".4"
+                    android:background="#3333"
+                    android:gravity="center"
+                    android:id="@+id/aa"
+                    android:paddingTop="5dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="-3 / 3"
+                    android:layout_weight=".4"
+                    android:background="#3333"
+                    android:gravity="center"
+                    android:id="@+id/ab"
+                    android:paddingTop="5dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/row3"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/row2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:layout_weight="0.22"
+                    android:background="#0D47A1"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="2 / 1"
+                    android:layout_weight=".4"
+                    android:background="#3333"
+                    android:gravity="center"
+                    android:id="@+id/ba"
+                    android:paddingTop="5dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="-3 / 3"
+                    android:layout_weight=".4"
+                    android:background="#3333"
+                    android:gravity="center"
+                    android:id="@+id/bb"
+                    android:paddingTop="5dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hint1"
+        android:layout_below="@+id/row3"
+        android:gravity="center"
+        android:textSize="10dp"
+
+        android:text="Hint: All the returns are given in the form of x/y, where x specifies the reward of you and y gives the reward for the computer."
+       />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hint2"
+        android:layout_below="@+id/hint1"
+        android:gravity="center"
+        android:layout_marginBottom="40dp"
+        android:textSize="10dp"
+        android:text="Hint: My action is specified by the row. The opponent's action is given by the column."
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/hint2"
+        android:gravity="center"
+        android:id="@+id/chooseAction"
+        android:layout_marginBottom="90dp"
+        android:layout_height="wrap_content">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose\naction a"
+        android:id="@+id/actionA"
+        android:layout_marginRight="20dp"
+        android:onClick="handleAction"
+        android:enabled="true"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose\naction b"
+        android:layout_toRightOf="@+id/actionA"
+        android:id="@+id/actionB"
+        android:enabled="true"
+        android:onClick="handleAction"
+        />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result:"
+        android:textStyle="bold"
+        android:layout_below="@+id/chooseAction"
+        android:gravity="center"
+        android:id="@+id/result"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You Choose: Action_"
+        android:layout_below="@+id/result"
+        android:gravity="center"
+        android:id="@+id/resultText1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opponent Choose: Action_"
+        android:layout_below="@+id/resultText1"
+        android:gravity="center"
+        android:id="@+id/resultText2"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You obtain:_points"
+        android:layout_below="@+id/resultText2"
+        android:gravity="center"
+        android:id="@+id/resultText3"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opponent obtain:_points"
+        android:layout_below="@+id/resultText3"
+        android:gravity="center"
+        android:id="@+id/resultText4"
+        />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_below="@+id/resultText4"
+     android:gravity="center"
+     android:layout_marginTop="30dp"
+     android:layout_height="wrap_content">
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="dismiss"
+         android:id="@+id/dismiss"
+
+         />
+ </LinearLayout>
+
+
+</RelativeLayout>
