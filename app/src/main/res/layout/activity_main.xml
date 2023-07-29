@@ -65,7 +65,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="#2196F3"
+                     android:background="@color/color1"
                     android:layout_weight="1"
                     android:text="Opponent\nScore"
                     android:gravity="center"
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="#FFEB3B"
+                    android:background="@color/color2"
                     android:layout_weight="1"
                     android:text="0"
                     android:gravity="center"

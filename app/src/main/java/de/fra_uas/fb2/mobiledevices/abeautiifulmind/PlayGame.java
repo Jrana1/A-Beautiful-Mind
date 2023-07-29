@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class PlayGame extends AppCompatActivity {
+    // declare component
     private Button dismiss;
     private TextView strategyName;
     private TextView aa;
@@ -28,18 +29,22 @@ public class PlayGame extends AppCompatActivity {
     private int mySc;
     private int oppSc;
     private String stName;
+    // this 2D array will contain the game matrix. every element as an object of a Point()
     private Point[][]joinActions=new Point[2][2];
     private TextView resultTxt1;
     private TextView resultTxt2;
     private TextView resultTxt3;
     private TextView resultTxt4;
+    // this 2D array will contain four textView which contains the PayOff in the game matrix
     private TextView[][] textViews=new TextView[2][2];
     private boolean hasPlayed=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
+        // Getting the references of all the component
         dismiss = findViewById(R.id.dismiss);
+        // get intent from main activity
         Bundle extras = getIntent().getExtras();
         strategyName=findViewById(R.id.strategyName);
         aa=findViewById(R.id.aa);
@@ -56,10 +61,13 @@ public class PlayGame extends AppCompatActivity {
         textViews[0][1]=ab;
         textViews[1][0]=ba;
         textViews[1][1]=bb;
+
+        // Generate randoms pair for the game board
         Random rn = new Random();
         int min=-5;
         int max=5;
         int i=0;
+        // for temporarily saving the game board
         int [][]tmp=new int[4][2];
         for(int m=0;m<2;m++){
             for(int n=0;n<2;n++){
@@ -72,6 +80,7 @@ public class PlayGame extends AppCompatActivity {
                 textViews[m][n].setText(str);
             }
         }
+        // save the game matrix as point
         int  k=0;
         for(int m=0;m<2;m++){
             for(int n=0;n<2;n++){
@@ -79,17 +88,18 @@ public class PlayGame extends AppCompatActivity {
                 k++;
             }
         }
+        // set the name of the strategy which was chosen in main activity
         strategyName.setText(extras.getString("strategy"));
+        // little animation
         YoYo.with(Techniques.FlipInX)
                 .duration(700)
                 .repeat(3)
                 .playOn((strategyName));
+        // save strategy for further uses
         stName=extras.getString("strategy");
-
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.putExtra("myScore",String.valueOf(mySc));
                 intent.putExtra("opponentScore",String.valueOf(oppSc));
@@ -147,7 +157,6 @@ public class PlayGame extends AppCompatActivity {
                 if(map[i][j].x==1 && map[i][j].y==1){
                     nrEqulibria++;
                     pair.add(new Point(i,j));
-
                 }
             }
         }
@@ -216,22 +225,19 @@ public class PlayGame extends AppCompatActivity {
         int row = getRow(myChoice);
         int col=-1;
         int firstMin=Integer.MAX_VALUE;
-        int firstIdx=-1;
         int secondMin=Integer.MAX_VALUE;
-        int secondIdx=-1;
         for(int i=0;i<2;i++){
             if(joinActions[i][0].y<firstMin){
                 firstMin=joinActions[i][0].y;
-                firstIdx=i;
             }
         }
         for(int i=0;i<2;i++){
             if(joinActions[i][1].y<secondMin){
                 secondMin=joinActions[i][1].y;
             }
-            System.out.println(joinActions[i][1].y);
+          //  System.out.println(joinActions[i][1].y);
         }
-        System.out.println(firstMin+" "+firstIdx+" "+secondMin+" "+secondIdx);
+       // System.out.println(firstMin+" "+firstIdx+" "+secondMin+" "+secondIdx);
         if(firstMin>secondMin){
             col=0;
         }
